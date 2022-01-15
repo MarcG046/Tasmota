@@ -177,6 +177,7 @@ enum UserSelectablePins {
   GPIO_HM330X_SET,                     // HM330X SET pin (sleep when low)
   GPIO_HEARTBEAT, GPIO_HEARTBEAT_INV,
   GPIO_SHIFT595_SRCLK, GPIO_SHIFT595_RCLK, GPIO_SHIFT595_OE, GPIO_SHIFT595_SER,   // 74x595 Shift register
+  GPIO_MULTIPLEXER_SEL0, GPIO_MULTIPLEXER_SEL1, GPIO_MULTIPLEXER_SEL2, GPIO_MULTIPLEXER_SEL3, GPIO_MULTIPLEXER_EN, GPIO_MULTIPLEXER_ADC,
   GPIO_SENSOR_END };
 
 enum ProgramSelectablePins {
@@ -373,8 +374,8 @@ const char kSensorNames[] PROGMEM =
   D_SENSOR_BL0942_RX "|"
   D_SENSOR_HM330X_SET "|"
   D_SENSOR_HEARTBEAT "|" D_SENSOR_HEARTBEAT "_i|"
-
   D_GPIO_SHIFT595_SRCLK "|" D_GPIO_SHIFT595_RCLK "|" D_GPIO_SHIFT595_OE "|" D_GPIO_SHIFT595_SER "|"
+  D_GPIO_MULTIPLEXER_SEL0 "|" D_GPIO_MULTIPLEXER_SEL1 "|" D_GPIO_MULTIPLEXER_SEL2 "|" D_GPIO_MULTIPLEXER_SEL3 "|" D_GPIO_MULTIPLEXER_EN "|" D_GPIO_MULTIPLEXER_ADC "|"
 ;
 
 const char kSensorNamesFixed[] PROGMEM =
@@ -940,6 +941,15 @@ const uint16_t kGpioNiceList[] PROGMEM = {
   AGPIO(GPIO_SHIFT595_OE),
   AGPIO(GPIO_SHIFT595_SER),
 #endif
+#ifdef USE_MULTIPLEXED_ADC
+  AGPIO(GPIO_MULTIPLEXER_SEL0),            // multiplexed ADC
+  AGPIO(GPIO_MULTIPLEXER_SEL1),
+  AGPIO(GPIO_MULTIPLEXER_SEL2),
+  AGPIO(GPIO_MULTIPLEXER_SEL3),
+  AGPIO(GPIO_MULTIPLEXER_EN),
+  AGPIO(GPIO_MULTIPLEXER_ADC),
+#endif
+
 };
 
 /*-------------------------------------------------------------------------------------------*\
@@ -958,6 +968,7 @@ const uint16_t kAdcNiceList[] PROGMEM = {
   AGPIO(GPIO_ADC_CT_POWER),               // Current
   AGPIO(GPIO_ADC_JOY),                    // Joystick
   AGPIO(GPIO_ADC_PH),                     // Analog PH Sensor
+  AGPIO(GPIO_MULTIPLEXER_ADC),                  // Analog inputs
 };
 #endif  // ESP8266
 
@@ -973,6 +984,7 @@ enum UserSelectableAdc {
   ADC_CT_POWER,       // Current
   ADC_JOY,            // Joystick
   ADC_PH,             // Analog PH Sensor
+  MULTIPLEXER_ADC,             // Multiplexed ADC
 //  ADC_SWITCH,         // Switch
 //  ADC_SWITCH_INV,
   ADC_END };
