@@ -848,6 +848,13 @@
 #define D_GPIO_SHIFT595_OE     "74x595 OE"
 #define D_GPIO_SHIFT595_SER    "74x595 SER"
 
+#define D_GPIO_MULTIPLEXER_SEL0 "Analoge Multipl. Sel0"
+#define D_GPIO_MULTIPLEXER_SEL1 "Analoge Multipl. Sel1"
+#define D_GPIO_MULTIPLEXER_SEL2 "Analoge Multipl. Sel2"
+#define D_GPIO_MULTIPLEXER_SEL3 "Analoge Multipl. Sel3"
+#define D_GPIO_MULTIPLEXER_EN "Analoge Multipl. Enable"
+#define D_GPIO_MULTIPLEXER_ADC "Analoge Multiplexer ADC Input"
+
 // Units
 #define D_UNIT_AMPERE "A"
 #define D_UNIT_CELSIUS "C"
